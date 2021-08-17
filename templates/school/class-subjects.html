@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    ASSIGNMENTS
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                
+                <div class='container-fluid'>
+                    {% if user.is_authenticated and user.profile.is_tutor %}
+                    <a class="btn btn-primary btn-lg btn-block mb-4" href='{% url 'assignment-create' %}' role="button">New Assignment</a>
+                    {% endif %}
+                </div>
+
+                {% for assignment in assignment_list %}
+                    <article class='media content-section'>
+                        <div class='media-body'>
+                            <div class='article-metadata'>
+                                <img class='rounded-circle article-image' width='3%' src='{{ assignment.author.profile.image.url }}'>
+                                <small>{{ assignment.author }}</small>
+                                <small class='text-muted'>{{ assignment.date_posted|date:"F d, Y" }}</small>
+                            </div>
+                            <h2><a class='article-title' href='{% url 'assignment-detail' assignment.id %}'>{{ assignment.title }}</a></h2>
+                            <p class='article-content'>{{ assignment.desc }}</p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    QUIZZES
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+
+                <div class='container-fluid'>
+                    {% if user.is_authenticated and user.profile.is_tutor %}
+                    <a class="btn btn-primary btn-lg btn-block mb-4" href='{% url 'quiz-create' %}' role="button">New Quiz</a>
+                    {% endif %}
+                </div>
+
+                {% for quiz in quiz_list %}
+                    <article class='media content-section'>
+                        <div class='media-body'>
+                            <div class='article-metadata'>
+                                <img class='rounded-circle article-image' width='3%' src='{{ quiz.author.profile.image.url }}'>
+                                <small>{{ quiz.author }}</small>
+                                <small class='text-muted'>{{ quiz.date_posted|date:"F d, Y" }}</small>
+                            </div>
+                            <h2><a class='article-title' href='{% url 'quiz-detail' quiz.id %}'>{{ quiz.title }}</a></h2>
+                            <p class='article-content'>{{ quiz.desc }}</p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

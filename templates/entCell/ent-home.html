@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load embed_video_tags %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'ent-home.css' %}">
+{% endblock styles %}
+
+{% block header_scripts %}
+    {{ block.super }}
+    <script type="text/javascript"> 
+        window.onload = function() {
+        if (window.jQuery) {
+            alert('jQuery is loaded');
+        } else {
+            alert('jQuery is not loaded');
+            }
+        }
+    </script>
+
+    {% comment %} <script type='text/javascript'>
+        var interval;
+        function startTicker(){
+            $("#news li:first").slideUp(function(){
+                $(this).apppendTo($("#news")).slideDown();
+            });
+        }
+
+        function stopTicker(){
+            clearInterval(interval);
+        }
+
+        $(document).onload(function(){
+            interval = setInterval(startTicker, 1000);
+            $("#news").hover(function(){
+                stopTicker();
+            }, function(){
+                interval = setInterval(startTicker, 1000);
+                });
+        });
+    </script> {% endcomment %}
+{% endblock header_scripts %}
+
+{% block content %}
+
+<div class='row text-center'>
+    <div class='col-md-12'>
+        <h1 class="display-4">Resource Videos</h1>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for vid in entVids %}
+        <div class="col">
+            <div class="card m-2">
+                {% video vid.video '100% x 100%' %}
+            <div class="card-body">
+                <h6 class="card-title">{{ vid.title }}</h6>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class='row text-center'>
+    <div class='col-md-12'>
+        <h1 class="display-4">Entrepreneurial News</h1>
+    </div>
+</div>
+
+<div class='vticker-wrap'>
+    <ul id="news">
+        {% for news in entNewss %}
+            {% if news.link %}
+                <li><a target='_blank' href="{{ news.link }}">{{ news.title }}</a></li><hr>
+            {% else %}
+                <li>{{ news.title }}</li><hr>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+{% comment %} {% for vid in entVids %}
+{% video vid.video 'tiny' %}
+{% endfor %} {% endcomment %}
+
+{% endblock content %}

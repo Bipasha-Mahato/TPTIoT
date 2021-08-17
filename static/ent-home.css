@@ -1,0 +1,34 @@
+.vticker-wrap {
+    height: 150px;
+    width: 50%;
+    margin: auto;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: content-box;
+    background: #eee;
+}
+
+@keyframes vticker {
+    0% { margin-top: 0; }
+    25% { margin-top: -52px; }
+    50% { margin-top: -104px; }
+    75% { margin-top: -156px; }
+    100% { margin-top: 0; }
+}
+.vticker-wrap ul {
+    animation-name: vticker;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0, 0.5, 0);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.vticker-wrap ul:hover {
+    animation-play-state: paused;
+}
+
+.vticker-wrap ul li {
+    line-height: 26px;
+    font-size: 18px;
+}

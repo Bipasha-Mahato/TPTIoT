@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  tribeguru:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: learningapp
+    volumes:
+      - .:/learningapp
+    ports:
+      - "9002:8000"

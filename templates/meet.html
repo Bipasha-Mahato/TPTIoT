@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'tg-meet.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    {% comment %} <script src="https://meet.jitsi.org/external_api.js"></script> {% endcomment %}
+    <script src = "{% static 'external_api.js' %}"></script>
+    <script src="{% static 'tg-meet.js' %}"></script>
+
+    <script>
+        $(function(){
+            $('#btnStart').on('click', function(){
+                var meetingId = document.getElementById('txtMeetingId').value;
+                var dispName = document.getElementById('txtDispName').value;
+                StartMeeting(meetingId, dispName);
+            });
+            $('btnHangup').on('click', function(){
+                HangupCall();
+            });
+        });
+    </script>
+
+{% endblock styles %}
+
+{% block content %}
+    <div class='container-fluid'>
+        {% if user.is_authenticated and user.profile.is_tutor %}
+            <div class='row m-4' id='inpForm'>
+                <form class="form-inline">
+                <input type="text" class="form-control mb-2 mr-sm-2" id="txtMeetingId" placeholder="Meeting ID">
+                <input type="text" class="form-control mb-2 mr-sm-2" id="txtDispName" placeholder="Your Name">
+                </form>
+                <button class="btn btn-primary mb-2" id="btnStart">Start Meeting</button>
+            </div>
+
+            <div class='row text-center'>
+                <div class='col-md-12'>
+                    {% comment %} <h1 class="display-4">Resource Videos</h1> {% endcomment %}
+                    <div class='h2' id='endMsg'></div>
+                </div>
+            </div>
+
+            <div class='m-2' id='jitsi-meet-conf-container'></div>
+        {% elif user.is_authenticated and user.profile.is_student %}
+            <div class='row text-center'>
+                <div class='h2 m-4'>
+                    You are a Student. You do not have permission to create a classroom.
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+# Diksha App
+
+Created by - NCERT (MHRD, GoI)
+12 languages support
+
+DIKSHA is India's national digital infrastructure for school education.
+(Primarily built to support teachers digitally)
+
+*Digital Textbooks
+*Courses - for teachers and students
+*Course material - Video, documents, interactive content (MCQs, Long 			Answer Qs, Short Answer Qs)
+
+*Board -> Medium -> Class -> Subjects -> Course material
+
+*(new) Groups can be created (students/teachers) to share content and 	learn together
+
+*Supports mutiple content formats - Video, PDF, etc.
+
+*Content pool for all the students (works globally)
+
+*Vidyadaan (vdn.diksha.gov.in) is used to contribute resources (individually, or as an organisation)
+
+* Multiple state governments, NGOs, and different public/private organisations have collaborated in contributing to the initiative.
+
+
+

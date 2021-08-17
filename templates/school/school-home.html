@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% comment %} {% for item in class_list %}
+    {{ item }}
+{% endfor %} {% endcomment %}
+
+    <div class="container">
+        <div class="row">
+            {% for item in class_list %}
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="/static/school-home.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text text-center"><a class="btn btn-outline-success"
+                                href="{% url 'school-classes' item.id %}" role="button"><strong>{{ item }}</strong></a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% comment %} {% url 'school-classes' item|slugify %} {% endcomment %}
+
+{% endblock content %}

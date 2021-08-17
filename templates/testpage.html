@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    {% comment %} <script> 
+    window.onload = function() {
+    if (window.jQuery) {
+        alert('jQuery is loaded');
+    } else {
+        alert('jQuery is not loaded');
+        }
+    }
+    </script> {% endcomment %}
+
+    <script>
+        function startTicker()
+        {
+            $("#news li:first").slideUp(function(){
+
+                $(this).appendTo($("#news")).slideDown();
+            });
+        }
+
+        setInterval(startTicker, 100);
+    </script>
+
+    {% comment %} <script>
+        var interval;
+        function startTicker(){
+            $("#news li:first").slideUp(function(){
+                $(this).apppendTo($("#news")).slideDown();
+            });
+        }
+
+        function stopTicker(){
+            clearInterval(interval);
+        }
+
+        $(document).onload(function(){
+            interval = setInterval(startTicker, 1000);
+            $("#news").hover(function(){
+                stopTicker();
+            }, function(){
+                interval = setInterval(startTicker, 1000);
+            });
+        });
+    </script> {% endcomment %}
+
+    <title>Document</title>
+</head>
+<body>
+    <ul id="news">
+        <li>First news</li>
+        <li>Second news</li>
+        <li>Third news</li>
+        <li>Fourth news</li>
+    </ul>
+</body>
+</html>
