@@ -1,0 +1,40 @@
+school\tests.py:1:1 'django.test.TestCase' imported but unused
+school\views.py:1:1 'django.shortcuts.HttpResponse' imported but unused
+school\views.py:5:1 'from .models import *' used; unable to detect undefined names
+school\views.py:9:13 'Class' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:10:15 'Class' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:14:22 'Class' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:20:20 'Subject' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:20:50 'Class' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:25:32 'Assignment' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:25:66 'Subject' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:25:127 'Class' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:26:26 'Quiz' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:26:54 'Subject' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:26:115 'Class' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:33:13 'Assignment' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:36:13 'Assignment' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:44:13 'Assignment' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:58:13 'Assignment' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:70:13 'Quiz' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:73:13 'Quiz' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:81:13 'Quiz' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+school\views.py:95:13 'Quiz' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+users\apps.py:8:9 'users.signals' imported but unused
+users\tests.py:1:1 'django.test.TestCase' imported but unused
+users\views.py:13:39 f-string is missing placeholders
+users\views.py:29:39 f-string is missing placeholders
+..\..\Desktop\hello\my_env\lib\site-packages\crispy_forms\templatetags\crispy_forms_tags.py:14:1 'from crispy_forms.templatetags.crispy_forms_filters import *' used; unable to detect undefined names
+..\..\Desktop\hello\my_env\lib\site-packages\crispy_forms\templatetags\crispy_forms_tags.py:14:1 'crispy_forms.templatetags.crispy_forms_filters.*' imported but unused
+entCell\tests.py:1:1 'django.test.TestCase' imported but unused
+vAssist\tests.py:1:1 'django.test.TestCase' imported but unused
+vAssist\views.py:1:1 'django.shortcuts.HttpResponse' imported but unused
+vAssist\views.py:2:1 'django.utils.html.escape' imported but unused
+vAssist\views.py:3:1 'django.utils.timezone' imported but unused
+vAssist\views.py:10:1 'from .models import *' used; unable to detect undefined names
+vAssist\views.py:17:9 local variable 'path' is assigned to but never used
+vAssist\views.py:38:18 'voiceQuery' may be undefined, or defined from star imports: [E] PYFLAKES:.models
+..\..\Desktop\hello\my_env\lib\site-packages\django\contrib\messages\__init__.py:1:1 'from django.contrib.messages.api import *' used; unable to detect undefined names
+..\..\Desktop\hello\my_env\lib\site-packages\django\contrib\messages\__init__.py:1:1 'django.contrib.messages.api.*' imported but unused
+..\..\Desktop\hello\my_env\lib\site-packages\django\contrib\messages\__init__.py:2:1 'from django.contrib.messages.constants import *' used; unable to detect undefined names
+..\..\Desktop\hello\my_env\lib\site-packages\django\contrib\messages\__init__.py:2:1 'django.contrib.messages.constants.*' imported but unused
