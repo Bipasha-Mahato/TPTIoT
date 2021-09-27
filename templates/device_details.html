@@ -1,0 +1,270 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
+
+    <title>Tribe IoT Dashboard</title>
+    <style type="text/css">
+    	<!--
+    	#container {
+    		width:100%;
+    	}
+    	#box1	{
+
+    		float:left; min-height:400px; width:400px; margin-right:50px;
+    	}
+    	#box2 	{
+
+    		float:left; min-height:400px; width:800px;
+    	}
+    	-->
+    	</style>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Tribe IoT</a>
+
+
+      <ul class="list-inline">
+         <li class="list-inline-item"><a class="text-white" href="/profile">Profile</a></li>
+         <li class="list-inline-item"><a class="text-white p-3" href="/logout">Sign out</a></li>
+      </ul>
+
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="/dashboard">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/devices">
+                  <span data-feather="file"></span>
+                  Devices
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Reports
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="settings"></span>
+                  Settings
+                </a>
+              </li>
+            </ul>
+
+
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Node-{{node_id}} Details</h1>
+
+          </div>
+
+          <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
+          <!--<iframe src="http://localhost:3000/d-solo/vijAVahMz/dashboard_1?orgId=1&refresh=5s&from=1602143954658&to=1604735954658&var-nodes=1&theme=light&panelId=4" width="450" height="200" frameborder="0"></iframe>-->
+          <!--<iframe src="http://localhost:3000/d-solo/vijAVahMz/dashboard_1?orgId=1&refresh=5s&from=now-30m&to=now&var-nodes=1&theme=light&panelId=5" width="450" height="200" frameborder="0"></iframe>-->
+<br><br>
+
+<div id="container">
+<br>
+
+
+<div class="row">
+  <div style="margin-left: 30px;" class="col-md-30">
+    <div class="card">
+      <div class="card-body">
+
+        <canvas id="myChart2" width="500" height="250"></canvas>
+      </div>
+    </div>
+  </div>
+  <div style="margin-left: 30px;" class="col-md-30">
+    <div class="card">
+      <div class="card-body">
+
+        <canvas id="myChart3" width="500" height="250"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+        </main>
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+
+    <script type="text/javascript">
+      var label_X = [0];
+     var data_Y = [0];
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+            labels:label_X,
+            datasets: [
+                {
+                    label: "Temperature (C)",
+                    fill: false,
+                    lineTension: 0.1,
+                    backgroundColor: "rgba(75, 192, 192, 0.4)",
+                    borderColor: "rgba(75, 192, 192, 1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHitRadius: 10,
+                    data: data_Y,
+                }
+            ]},
+            options: {
+          scales: {
+              xAxes: [{
+                  ticks: {
+                      display: false
+                  }
+              }]
+          }
+      }
+
+});
+
+dataUpdater();
+
+function dataUpdater() {
+    $.ajax({
+        type: "get",
+        url: '/api/chart/temperature/{{node_id}}',
+        global: false,
+        cache: false
+    }).done(function (newData) {
+      data_Y.push((newData.default));
+      label_X.push(newData.labels);
+      console.log(label_X)
+      myLineChart.update();
+    });
+
+    console.info('Updating canvas is Done');
+    setTimeout(function () {
+        dataUpdater();
+    }, 5000);
+}
+
+    </script>
+
+    <script type="text/javascript">
+    var label_X1 = [0];
+     var data_Y1 = [0];
+        var ctx1 = document.getElementById('myChart3').getContext('2d');
+        var myLineChart1 = new Chart(ctx1, {
+    type: 'line',
+    data: {
+            labels:label_X1,
+            datasets: [
+                {
+                    label: "Humidity (%)",
+                    fill: false,
+                    lineTension: 0.1,
+                    backgroundColor: "rgba(75, 192, 192, 0.4)",
+                    borderColor: "rgba(75, 192, 192, 1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHitRadius: 10,
+                    data: data_Y1,
+                }
+            ]},
+            options: {
+          scales: {
+              xAxes: [{
+                  ticks: {
+                      display: false
+                  }
+              }]
+          }
+      }
+
+});
+
+dataUpdater1();
+
+function dataUpdater1() {
+    $.ajax({
+        type: "get",
+        url: '/api/chart/humidity/{{node_id}}',
+        global: false,
+        cache: false
+    }).done(function (newData1) {
+      data_Y1.push((newData1.default));
+      label_X1.push(newData1.labels);
+      console.log(label_X1)
+      myLineChart1.update();
+    });
+
+    console.info('Updating canvas is Done');
+    setTimeout(function () {
+        dataUpdater1();
+    }, 5000);
+}
+
+    </script>
+
+
+  </body>
+</html>
